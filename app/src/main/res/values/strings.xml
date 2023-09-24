@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Twitter</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_direct_message">Message</string>
+    <string name="following">Following</string>
+    <string name="for_you">For You</string>
+</resources>
