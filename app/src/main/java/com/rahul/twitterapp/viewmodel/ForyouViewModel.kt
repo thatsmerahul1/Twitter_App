@@ -21,8 +21,8 @@ class ForyouViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val tweetsUseCase = GetTweetsUseCase(Repository(apiService))
-                val tweets: TweetListDataClass = tweetsUseCase.execute()
-                _tweets.value = tweets
+                val tweetsResult: Result<TweetListDataClass> = tweetsUseCase.execute()
+                _tweets.value = tweetsResult.getOrNull()
             } catch (e: Exception) {
                 Log.e(TAG, e.message.toString())
             }
