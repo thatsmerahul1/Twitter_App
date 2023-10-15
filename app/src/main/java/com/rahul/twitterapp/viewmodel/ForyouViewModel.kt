@@ -22,7 +22,7 @@ class ForyouViewModel : ViewModel() {
             try {
                 val tweetsUseCase = GetTweetsUseCase(Repository(apiService))
                 val tweetsResult: Result<TweetListDataClass> = tweetsUseCase.execute()
-                _tweets.value = tweetsResult.getOrNull()
+                _tweets.value = tweetsResult.getOrDefault(TweetListDataClass())
             } catch (e: Exception) {
                 Log.e(TAG, e.message.toString())
             }

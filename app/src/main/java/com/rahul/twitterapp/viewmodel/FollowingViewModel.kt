@@ -23,7 +23,7 @@ class FollowingViewModel : ViewModel() {
             try {
                 val tweetsUseCase = GetTweetsForFollowingUseCase(Repository(apiService))
                 val tweetsResult: Result<TweetListDataClass> = tweetsUseCase.execute()
-                _tweets.value = tweetsResult.getOrNull()
+                _tweets.value = tweetsResult.getOrDefault(TweetListDataClass())
             } catch (e: Exception) {
                 Log.e(TAG, e.message.toString())
             }
