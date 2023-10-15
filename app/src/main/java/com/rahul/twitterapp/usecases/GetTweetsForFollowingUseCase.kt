@@ -6,7 +6,7 @@ import com.rahul.twitterapp.data.model.TweetListDataClass
 class GetTweetsForFollowingUseCase (private val repository: Repository) {
     suspend fun execute(): Result<TweetListDataClass> {
         return try {
-            val response = repository.fetchTweetData()
+            val response = repository.fetchTweetDataForFollowing()
             if (response.isSuccessful) {
                 Result.success(response.body()!!)
             } else {
