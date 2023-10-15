@@ -29,8 +29,9 @@ open class BaseActivity: AppCompatActivity(), NetworkStatusChangeListener {
     }
 
     override fun onNetworkStatusChanged(isNetworkAvailable: Boolean) {
-        val networkStatusText = if (isNetworkAvailable) getString(R.string.network_available_now) else getString(R.string.network_not_available)
-        showToast(networkStatusText)
+        if (!isNetworkAvailable) {
+            showToast(getString(R.string.network_not_available))
+        }
     }
 
     open fun showToast(message: String) {
