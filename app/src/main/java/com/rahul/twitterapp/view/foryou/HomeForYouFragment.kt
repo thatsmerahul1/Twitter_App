@@ -67,7 +67,7 @@ class HomeForYouFragment : Fragment() {
     private fun hideLoader() {
         // Kept delay of 1 second just to show loader or else it was not showing the loader because of small data is getting fetched immediately
         lifecycleScope.launch {
-            delay(1000)
+//            delay(1000)
             binding.recyclerView.visibility = View.VISIBLE
             binding.progressBar.visibility = View.GONE
         }
