@@ -9,10 +9,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rahul.twitterapp.adapter.TweetListAdapter
+import com.rahul.twitterapp.constants.AppConstants
 import com.rahul.twitterapp.data.model.TweetListDataClass
+import com.rahul.twitterapp.data.services.ApiClient
 import com.rahul.twitterapp.databinding.FragmentForYouBinding
+import com.rahul.twitterapp.repository.Repository
 import com.rahul.twitterapp.viewmodel.ForyouViewModel
-import kotlinx.coroutines.delay
+import com.rahul.twitterapp.viewmodel.TweetsViewModelFactory
 import kotlinx.coroutines.launch
 
 class HomeForYouFragment : Fragment() {
@@ -25,7 +28,9 @@ class HomeForYouFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val forYouViewModel = ViewModelProvider(this)[ForyouViewModel::class.java]
+        val forYouViewModel = ViewModelProvider(this,
+            TweetsViewModelFactory(Repository(ApiClient.apiService),
+                AppConstants.VIEW_MODEL_KEY_FOR_YOU))[ForyouViewModel::class.java]
         _binding = FragmentForYouBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
